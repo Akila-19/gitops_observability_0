@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-web-svc
+spec:
+  selector:
+    app: simple-web # Connects to the Deployment using this label
+  ports:
+    - protocol: TCP
+      port: 80 # The service port (how others access it)
+      targetPort: 80 # The container port (where the web server is running)
+  type: ClusterIP # Only accessible from inside the cluster
