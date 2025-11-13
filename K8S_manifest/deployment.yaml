@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-web-deployment
+  labels:
+    app: simple-web
+spec:
+  replicas: 2 # Run 2 copies of the application
+  selector:
+    matchLabels:
+      app: simple-web
+  template:
+    metadata:
+      labels:
+        app: simple-web
+    spec:
+      containers:
+      - name: web-container
+        image: nginx:latest # The public web server image
+        ports:
+        - containerPort: 80 # The port the NGINX container listens on
